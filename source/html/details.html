@@ -5,32 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/style.css">
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
     <title>Dettagli</title>
 </head>
 
 <body id="loading" class="container-fluid">
-
+    <div class="loader">LOADING...</div>
     <header id="testa" class="jumbotron jumbotron-fluid p-2  shadow-nohover">
-        <h1 id="title" class="h headers">Dettagli<h1>
+        <h1 id="title" class="text-center">Dettagli
+            <h1>
     </header>
-
-    <main id="container" class="card align-items-center shadow-nohover">
-
-        <section id="dati" style="width:70%">
-            <article class="card align-items-center">
-                <p>Nome</p> <p id="name"></p>
-                <p>Username</p> <p id="username"></p>
-                <p>E-mail</p> <p id="email"></p>
-                <p>Indirizzo</p> <p id="address"></p>
-                <p>Phone</p> <p id="phone"></p>
-                <p>Website</p> <p id="website"></p>
+    <main id="container" class=" text-center align-items-center shadow-nohover">
+        <section id="dati" >
+            <article class="card p-3 align-items-center">
+                <p>Nome:
+                    <span class="text-primary" id="name"></span>
+                </p>
+                <p>Username:
+                    <span class="text-primary" id="username"></span>
+                </p>
+                <p>E-mail:
+                    <span class="text-primary" id="email"></span>
+                </p>
+                <p>Indirizzo:
+                    <span class="text-primary" id="address"></span>
+                </p>
+                <p>Phone:
+                    <span class="text-primary" id="phone"></span>
+                </p>
+                <p>Website:
+                    <span class="text-primary" id="website"></span>
+                </p>
+                <button id="back" class="btn btn-secondary">indietro</button>
             </article>
-            <button id="back">indietro</button>
         </section>
-
     </main>
     <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/tether/dist/js/tether.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../javascript/details.js"></script>
 </body>
 

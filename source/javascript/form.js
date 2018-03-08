@@ -29,6 +29,7 @@ function loadForm(user) {
   for (var i = 0; i < arrayId.length; i++) {
     load(arrayId[i], arrayValue[i]);
   }
+  $('.loader').fadeOut();
 }
 window.addEventListener("load", function() {
   //avvio funzione dopo il caricamento del DOM
@@ -38,7 +39,7 @@ window.addEventListener("load", function() {
   });
   switch (this.localStorage.getItem("selector")) {
     case "create":
-      console.log("create");
+      $('.loader').fadeOut();
       $("#submit").click(function() {
         $.ajax({
           url: "https://jsonplaceholder.typicode.com/users",
@@ -58,7 +59,6 @@ window.addEventListener("load", function() {
       break;
     case "modify":
     case "delete":
-      console.log("modify");
       $.getJSON(
         "https://jsonplaceholder.typicode.com/users/" +
           localStorage.getItem("id"),

@@ -26,6 +26,7 @@ function loadDetails(user){
     for (var i = 0; i < arrayId.length; i++) {
       load(arrayId[i], arrayValue[i]);
     }
+    $('.loader').fadeOut();
 }
 window.addEventListener("load", function() {
     //avvio funzione dopo il caricamento del DOM

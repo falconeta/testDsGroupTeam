@@ -4,14 +4,10 @@ var pos = 1;
 function loadUser(user) {
   //funzione caricamento homepage con binding e popolazione localStorage se disponibile
   "use strict";
-  // if (localStorage && localStorage.ultimoaccesso) {
-  //     oldDate = localStorage.ultimoaccesso;
-  // } else {
-  //     oldDate = "MAI";
-  // }
   localStorage.setItem("id", "");
   localStorage.setItem("selector", "");
   loadTable(user);
+  $('.loader').fadeOut();
 }
 function addRow(array, arrayValue) {
   //funzione creazione righe tabella
