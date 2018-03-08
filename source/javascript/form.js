@@ -4,7 +4,7 @@ function load(arrayId, arrayValue) {
   $("#" + arrayId).attr("value", arrayValue);
 }
 function loadForm(user) {
-  //binding form in modalità modify
+  //binding form in modalità modify/delete
   "use strict";
   var arrayId = [
     "name",
