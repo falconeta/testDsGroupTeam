@@ -1,13 +1,12 @@
 /*global $ */
-function loadUser(user) {
-  //funzione caricamento homepage con binding e popolazione localStorage se disponibile
+function loadUser(users) {//funzione invocata dalla chiamata get per l'acquisizione degli utenti
   "use strict";
   localStorage.setItem("id", "");
   localStorage.setItem("selector", "");
-  loadTable(user);
+  loadTable(users);//instanza di caricamento tabella
   $('.loader').fadeOut();
 }
-function loadButton(id, btnId, text, name, classBtn) {
+function loadButton(id, btnId, text, name, classBtn) {//funzione di creazione bottoni 
   'use strict';
   var btn = $(document.createElement("button"));
   $(btn).attr("id", btnId);
@@ -17,8 +16,7 @@ function loadButton(id, btnId, text, name, classBtn) {
   $(btn).attr("class", classBtn);
   return btn;
 }
-function addRow(array, arrayValue) {
-  //funzione creazione righe tabella
+function addRow(array, arrayValue) {//funzione creazione righe tabella
   "use strict";
   var tr = $(document.createElement("tr"));
   for (var i = 1; i < array.length; i++) {
@@ -33,14 +31,13 @@ function addRow(array, arrayValue) {
   var buttonId = ["btnDetails" + arrayValue[0], "btnModify" + arrayValue[0], "btnDelete" + arrayValue[0]];
   var buttonText = ["Dettagli", "Modifica", "Elimina"];
   var buttonName = ["details", "modify", "delete"];
-  var buttonClass = ['class="btn btn-primary"'];//classe da modificare per stile bottone tabella
+  var buttonClass = 'class="btn btn-primary"';//classe da modificare per stile bottone tabella
   for (var k = 0; k < buttonId.length; k++) {
-    $(tr).append(loadButton(arrayValue[0], buttonId[k], buttonText[k], buttonName[k], buttonClass[0]));
+    $(tr).append(loadButton(arrayValue[0], buttonId[k], buttonText[k], buttonName[k], buttonClass));
   }
   return tr;
 }
-function addRowTh(array) {
-  //funzione creazione testa tabella
+function addRowTh(array) {//funzione creazione testa tabella
   "use strict";
   var tr = $(document.createElement("tr"));
   $(tr).addClass("forecast bg-inverse text-white");
@@ -51,7 +48,7 @@ function addRowTh(array) {
   }
   return tr;
 }
-function loadTable(users) {
+function loadTable(users) {//funzione bindig tabella
   "use strict";
   var tr;
   var arrayValueTh = ["Nome", "Username", "Website", "Azioni"];
@@ -60,12 +57,7 @@ function loadTable(users) {
   for (var j = 0; j < users.length; j++) {
     //ciclo creazione righe tabella
     var arrayId = ["id" + j, "name" + j, "username" + j, "website" + j];
-    var arrayValue = [
-      users[j].id,
-      users[j].name,
-      users[j].username,
-      users[j].website
-    ];
+    var arrayValue = [users[j].id,users[j].name,users[j].username,users[j].website];
     tr = addRow(arrayId, arrayValue);
     $("#userTable").append($(document.createElement("tbody")).append(tr));
     for (var i = 1; i < arrayId.length; i++) {
@@ -81,14 +73,12 @@ function loadTable(users) {
     else {
       window.open('form.html', "_self");
     }
-
   });
 }
 function load(id, value) {
   //funzione di binding
   "use strict";
-  var name = document.getElementById(id);
-  name.innerText = value;
+  $('#'+id).text(value);
 }
 window.addEventListener("load", function () {
   //avvio funzione dopo il caricamento del DOM

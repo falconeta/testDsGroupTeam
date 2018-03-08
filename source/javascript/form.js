@@ -1,10 +1,26 @@
 /*global $ */
+function callRest(url, type, typeCall) {// funzione di chiamata servizio rest 
+  'use strict';
+  $.ajax({
+    url: url,
+    type: type,
+    data: $("#contact").serialize(),
+    success: function (data, textStatus) {
+      $("#result").text(typeCall + " " + textStatus);
+      setTimeout(function () {
+        window.open("index.html", "_self");
+      }, 2000);
+    },
+    error: function (data, textStatus, errorThrown) {
+      console.log(errorThrown);
+    }
+  });
+}
 function load(arrayId, arrayValue) {
   "use strict";
   $("#" + arrayId).attr("value", arrayValue);
 }
-function loadForm(user) {
-  //binding form in modalità modify/delete
+function loadForm(user) {//binding form in modalità modify/delete
   "use strict";
   var arrayId = [
     "name",
@@ -31,80 +47,34 @@ function loadForm(user) {
   }
   $(".loader").fadeOut();
 }
-window.addEventListener("load", function() {
-  //avvio funzione dopo il caricamento del DOM
+window.addEventListener("load", function () {//avvio funzione dopo il caricamento del DOM
   "use strict";
-  $("#back").click(function() {
+  $("#back").click(function () {
     window.open("index.html", "_self");
   });
-  switch (this.localStorage.getItem("selector")) {
+  switch (this.localStorage.getItem("selector")) {//switch per selezionare operazione in base al pulsante premuto (selettore in localStorage)
     case "create":
+      $("#title").text("Crea Utente");
       $(".loader").fadeOut();
-      $("#submit").click(function() {
-        $.ajax({
-          url: "https://jsonplaceholder.typicode.com/users",
-          type: "post",
-          data: $("#contact").serialize(),
-          success: function(data, textStatus) {
-            $("#result").text("create " + textStatus);
-            setTimeout(function() {
-              window.open("index.html", "_self");
-            }, 2000);
-          },
-          error: function(data, textStatus, errorThrown) {
-            console.log(errorThrown);
-          }
-        });
+      $("#submit").click(function () {
+        callRest("https://jsonplaceholder.typicode.com/users", "post", "create");
       });
       break;
-    case "modify":
-    case "delete":
-      $.getJSON(
-        "https://jsonplaceholder.typicode.com/users/" +
-          localStorage.getItem("id"),
-        loadForm
-      );
+    case "modify": case "delete":
+      $.getJSON("https://jsonplaceholder.typicode.com/users/" + localStorage.getItem("id"), loadForm);
       if (localStorage.selector === "modify") {
         $("#title").text("Modifica");
-        $("#submit").click(function() {
-          $.ajax({
-            url:
-              "https://jsonplaceholder.typicode.com/users/" +
-              localStorage.getItem("id"),
-            type: "put",
-            data: $("#contact").serialize(),
-            success: function(data, textStatus) {
-              $("#result").text("modify " + textStatus);
-              setTimeout(function() {
-                window.open("index.html", "_self");
-              }, 2000);
-            },
-            error: function(data, textStatus, errorThrown) {
-              console.log(errorThrown);
-            }
-          });
+        $("#submit").click(function () {
+          callRest("https://jsonplaceholder.typicode.com/users/" +
+            localStorage.getItem("id"), "put", "modify");
         });
       } else {
         $("#submit").attr("value", "Cancella");
         $("#title").text("Elimina");
-        $("#submit").click(function() {
+        $("#submit").click(function () {
           if (window.confirm("Vuoi veramente cancellare l'utente?")) {
-            $.ajax({
-              url:
-                "https://jsonplaceholder.typicode.com/users/" +
-                localStorage.getItem("id"),
-              type: "delete",
-              data: $("#contact").serialize(),
-              success: function(data, textStatus) {
-                $("#result").text("delete " + textStatus);
-                setTimeout(function() {
-                  window.open("index.html", "_self");
-                }, 2000);
-              },
-              error: function(data, textStatus, errorThrown) {
-                console.log(errorThrown);
-              }
-            });
+            callRest("https://jsonplaceholder.typicode.com/users/" +
+              localStorage.getItem("id"), "delete", "delete");
           }
         });
       }
