@@ -5,29 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Previsioni Meteo</title>
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Index</title>
 </head>
 
-<body id="loading" class="container-fluid">
+<body id="loading" class="container">
 
     <header id="testa" class="jumbotron jumbotron-fluid p-2  shadow-nohover">
-
+        <h1 class="text-center">Utenti</h1>
     </header>
 
-    <main id="container" class="card align-items-center shadow-nohover">
+    <main id="container" class=" shadow-nohover">
 
-        <section id="dati" style="width:70%">
-            <article class="card align-items-center">
+        <section id="dati">
+            <article class="">
                 <!--Table-->
-                <button name="create" value="" id="crea">crea</button>
-                <table id="userTable" class="table">
-                </table>
+                <button name="create" value="" id="crea" class="btn btn-primary">crea</button>
+                
+                    <table id="userTable" class="table table-striped">
+                    </table>
+                
             </article>
         </section>
 
     </main>
     <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/tether/dist/js/tether.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    
     <script src="../javascript/index.js"></script>
 </body>
 

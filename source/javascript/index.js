@@ -31,7 +31,7 @@ function addRow(array, arrayValue) {
   $(btnDetails).text("Dettagli");
   $(btnDetails).attr("value", arrayValue[0]);
   $(btnDetails).attr("name", "details");
-
+  $(btnDetails).attr("class",'class="btn btn-primary"');  
   $(tr).append(btnDetails);
   var btnModify = $(document.createElement("button"));
   $(btnModify).attr("id", "btnModify" + arrayValue[0]);
@@ -66,7 +66,7 @@ function loadTable(users) {
   var tr;
   var arrayValueTh = ["Nome", "Username", "Website", "Azioni"];
   var th = addRowTh(arrayValueTh);
-  $("#userTable").append(th);
+  $("#userTable").append($(document.createElement("thead")).append(th));
   for (var j = 0; j < users.length; j++) {
     //ciclo creazione righe tabella
     var arrayId = ["id" + j, "name" + j, "username" + j, "website" + j];
@@ -77,7 +77,7 @@ function loadTable(users) {
       users[j].website
     ];
     tr = addRow(arrayId, arrayValue);
-    $("#userTable").append(tr);
+    $("#userTable").append($(document.createElement("tbody")).append(tr));
     for (var i = 1; i < arrayId.length; i++) {
       load(arrayId[i], arrayValue[i]);
     }
