@@ -29,7 +29,7 @@ function loadForm(user) {
   for (var i = 0; i < arrayId.length; i++) {
     load(arrayId[i], arrayValue[i]);
   }
-  $('.loader').fadeOut();
+  $(".loader").fadeOut();
 }
 window.addEventListener("load", function() {
   //avvio funzione dopo il caricamento del DOM
@@ -39,7 +39,7 @@ window.addEventListener("load", function() {
   });
   switch (this.localStorage.getItem("selector")) {
     case "create":
-      $('.loader').fadeOut();
+      $(".loader").fadeOut();
       $("#submit").click(function() {
         $.ajax({
           url: "https://jsonplaceholder.typicode.com/users",
@@ -65,7 +65,7 @@ window.addEventListener("load", function() {
         loadForm
       );
       if (localStorage.selector === "modify") {
-        $('#title').text('Modifica');
+        $("#title").text("Modifica");
         $("#submit").click(function() {
           $.ajax({
             url:
@@ -85,7 +85,8 @@ window.addEventListener("load", function() {
           });
         });
       } else {
-          $('#title').text('Elimina');
+        $("#submit").attr("value", "Cancella");
+        $("#title").text("Elimina");
         $("#submit").click(function() {
           if (window.confirm("Vuoi veramente cancellare l'utente?")) {
             $.ajax({
