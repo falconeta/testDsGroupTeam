@@ -1,5 +1,3 @@
-/*global google */
-/*global moment */
 /*global $ */
 var n = 1;
 var pos = 1;
