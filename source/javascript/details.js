@@ -2,11 +2,9 @@
 function load(arrayId, arrayValue) {
     "use strict";
     $("#" + arrayId).text(arrayValue);
-    
   }
 function loadDetails(user){
     "use strict";
-    console.log(user);
     var arrayId = [
       "name",
       "username",
@@ -33,4 +31,7 @@ window.addEventListener("load", function() {
     //avvio funzione dopo il caricamento del DOM
     "use strict";
     $.getJSON("https://jsonplaceholder.typicode.com/users/"+localStorage.getItem('id'), loadDetails);
-  });
+    $('#back').click(function(){
+        window.open("index.html", "_self");
+    });
+});
