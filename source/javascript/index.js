@@ -1,6 +1,4 @@
 /*global $ */
-var n = 1;
-var pos = 1;
 function loadUser(user) {
   //funzione caricamento homepage con binding e popolazione localStorage se disponibile
   "use strict";
@@ -8,6 +6,16 @@ function loadUser(user) {
   localStorage.setItem("selector", "");
   loadTable(user);
   $('.loader').fadeOut();
+}
+function loadButton(id, btnId, text, name, classBtn) {
+  'use strict';
+  var btn = $(document.createElement("button"));
+  $(btn).attr("id", btnId);
+  $(btn).text(text);
+  $(btn).attr("value", id);
+  $(btn).attr("name", name);
+  $(btn).attr("class", classBtn);
+  return btn;
 }
 function addRow(array, arrayValue) {
   //funzione creazione righe tabella
@@ -22,25 +30,13 @@ function addRow(array, arrayValue) {
       $(tr).append('<td id="' + array[i] + '" class="text-center"></td>');
     }
   }
-  var btnDetails = $(document.createElement("button"));
-  $(btnDetails).attr("id", "btnDetails" + arrayValue[0]);
-  $(btnDetails).text("Dettagli");
-  $(btnDetails).attr("value", arrayValue[0]);
-  $(btnDetails).attr("name", "details");
-  $(btnDetails).attr("class",'class="btn btn-primary"');  
-  $(tr).append(btnDetails);
-  var btnModify = $(document.createElement("button"));
-  $(btnModify).attr("id", "btnModify" + arrayValue[0]);
-  $(btnModify).text("Modifica");
-  $(btnModify).attr("value", arrayValue[0]);
-  $(btnModify).attr("name", "modify");
-  $(tr).append(btnModify);
-  var btnDelete = $(document.createElement("button"));
-  $(btnDelete).attr("id", "btnDelete" + arrayValue[0]);
-  $(btnDelete).text("Elimina");
-  $(btnDelete).attr("value", arrayValue[0]);
-  $(btnDelete).attr("name", "delete");
-  $(tr).append(btnDelete);
+  var buttonId = ["btnDetails" + arrayValue[0], "btnModify" + arrayValue[0], "btnDelete" + arrayValue[0]];
+  var buttonText = ["Dettagli", "Modifica", "Elimina"];
+  var buttonName = ["details", "modify", "delete"];
+  var buttonClass = ['class="btn btn-primary"'];//classe da modificare per stile bottone tabella
+  for (var k = 0; k < buttonId.length; k++) {
+    $(tr).append(loadButton(arrayValue[0], buttonId[k], buttonText[k], buttonName[k], buttonClass[0]));
+  }
   return tr;
 }
 function addRowTh(array) {
@@ -57,8 +53,6 @@ function addRowTh(array) {
 }
 function loadTable(users) {
   "use strict";
-  n = 1;
-  pos = 1;
   var tr;
   var arrayValueTh = ["Nome", "Username", "Website", "Azioni"];
   var th = addRowTh(arrayValueTh);
@@ -78,16 +72,16 @@ function loadTable(users) {
       load(arrayId[i], arrayValue[i]);
     }
   }
-  $("button").click(function(data) {
-      localStorage.setItem('id', data.currentTarget.value);
-      localStorage.setItem('selector', data.currentTarget.name);
-      if(data.currentTarget.name==='details'){
-        window.open('details.html',"_self");
-      }
-      else{
-        window.open('form.html',"_self");
-      }
-      
+  $("button").click(function (data) {
+    localStorage.setItem('id', data.currentTarget.value);
+    localStorage.setItem('selector', data.currentTarget.name);
+    if (data.currentTarget.name === 'details') {
+      window.open('details.html', "_self");
+    }
+    else {
+      window.open('form.html', "_self");
+    }
+
   });
 }
 function load(id, value) {
@@ -96,7 +90,7 @@ function load(id, value) {
   var name = document.getElementById(id);
   name.innerText = value;
 }
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
   //avvio funzione dopo il caricamento del DOM
   "use strict";
   $.getJSON("https://jsonplaceholder.typicode.com/users", loadUser);
