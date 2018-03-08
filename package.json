@@ -1,0 +1,22 @@
+{
+  "name": "testdsgroupteam",
+  "version": "1.0.0",
+  "description": "creazione web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/falconeta/testDsGroupTeam.git"
+  },
+  "author": "Vittorio Lo Preiato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/falconeta/testDsGroupTeam/issues"
+  },
+  "homepage": "https://github.com/falconeta/testDsGroupTeam#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
