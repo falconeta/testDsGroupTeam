@@ -90,14 +90,12 @@ function loadTable(users) {
       
   });
 }
-
 function load(id, value) {
   //funzione di binding
   "use strict";
   var name = document.getElementById(id);
   name.innerText = value;
 }
-
 window.addEventListener("load", function() {
   //avvio funzione dopo il caricamento del DOM
   "use strict";
