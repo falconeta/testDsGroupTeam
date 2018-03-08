@@ -17,28 +17,29 @@
     <main class="container">
         <section>
             <article>
-                <form action="" method="POST" id="contact">
+                <form id="contact">
                     
                     <p>NAME:</p>
-                    <input type="text" class="form" name="name" id="name" placeholder="Name" required>
+                    <input type="text" class="form" name="name" id="name" placeholder="Name" >
                     <p>USERNAME:</p>
-                    <input type="text" name="username" class="form" id="username" placeholder="Username" required>
+                    <input type="text" name="username" class="form" id="username" placeholder="Username" >
                     <p>E-MAIL:</p>
-                    <input type="email" name="email" class="form" id="email" required placeholder="E-mail">
+                    <input type="email" name="email" class="form" id="email"  placeholder="E-mail">
                     <p>Via:</p>
-                    <input type="text" name="address.street" class="form" id="street" required placeholder="via">
+                    <input type="text" name="address.street" class="form" id="street"  placeholder="via">
                     <p>Città:</p>
-                    <input type="text" name="address.city" class="form" id="city" required placeholder="città">
+                    <input type="text" name="address.city" class="form" id="city"  placeholder="città">
                     <p>CAP:</p>
-                    <input type="text" name="address.zipcode" class="form" id="zipcode" required placeholder="CAP">
+                    <input type="text" name="address.zipcode" class="form" id="zipcode"  placeholder="CAP">
                     <p>PHONE:</p>
-                    <input type="text" name="phone" class="form" id="phone" required placeholder="Phone">
+                    <input type="text" name="phone" class="form" id="phone"  placeholder="Phone">
                     <p>WEBSITE:</p>
-                    <input type="text" name="website" class="form" id="website" required placeholder="Website">
+                    <input type="text" name="website" class="form" id="website"  placeholder="Website">
                     <br>
                     <div class="contBot">
                         <input type="reset" class="bottoni form" value="CLEAR">
-                        <input type="submit" class="bottoni form" id="submit" value="INVIA">
+                        <input type="button" class="bottoni form" id="submit" value="INVIA">
+                        <span id="result"></span>
                     </div>
                 </form>
 
