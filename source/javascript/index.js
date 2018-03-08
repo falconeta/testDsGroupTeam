@@ -31,6 +31,7 @@ function addRow(array, arrayValue) {
   $(btnDetails).text("Dettagli");
   $(btnDetails).attr("value", arrayValue[0]);
   $(btnDetails).attr("name", "details");
+
   $(tr).append(btnDetails);
   var btnModify = $(document.createElement("button"));
   $(btnModify).attr("id", "btnModify" + arrayValue[0]);
@@ -63,7 +64,6 @@ function loadTable(users) {
   n = 1;
   pos = 1;
   var tr;
-  console.log(users[5]);
   var arrayValueTh = ["Nome", "Username", "Website", "Azioni"];
   var th = addRowTh(arrayValueTh);
   $("#userTable").append(th);
@@ -83,9 +83,15 @@ function loadTable(users) {
     }
   }
   $("button").click(function(data) {
-      console.log(data.currentTarget.name);
       localStorage.setItem('id', data.currentTarget.value);
       localStorage.setItem('selector', data.currentTarget.name);
+      if(data.currentTarget.name==='details'){
+        window.open('details.html',"_self");
+      }
+      else{
+        window.open('form.html',"_self");
+      }
+      
   });
 }
 
@@ -100,5 +106,4 @@ window.addEventListener("load", function() {
   //avvio funzione dopo il caricamento del DOM
   "use strict";
   $.getJSON("https://jsonplaceholder.typicode.com/users", loadUser);
-  
 });

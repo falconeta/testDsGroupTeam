@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact us</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1 id="" class="h headers"></h1>
+    </header>
+    <main class="container">
+        <section>
+            <article>
+                <form action="" method="POST" id="contact">
+                    
+                    <p>NAME:</p>
+                    <input type="text" class="form" name="name" id="name" placeholder="Name" required>
+                    <p>USERNAME:</p>
+                    <input type="text" name="username" class="form" id="username" placeholder="Username" required>
+                    <p>E-MAIL:</p>
+                    <input type="email" name="email" class="form" id="email" required placeholder="E-mail">
+                    <p>Via:</p>
+                    <input type="text" name="address.street" class="form" id="street" required placeholder="via">
+                    <p>Città:</p>
+                    <input type="text" name="address.city" class="form" id="city" required placeholder="città">
+                    <p>CAP:</p>
+                    <input type="text" name="address.zipcode" class="form" id="zipcode" required placeholder="CAP">
+                    <p>PHONE:</p>
+                    <input type="text" name="phone" class="form" id="phone" required placeholder="Phone">
+                    <p>WEBSITE:</p>
+                    <input type="text" name="website" class="form" id="website" required placeholder="Website">
+                    <br>
+                    <div class="contBot">
+                        <input type="reset" class="bottoni form" value="CLEAR">
+                        <input type="submit" class="bottoni form" id="submit" value="INVIA">
+                    </div>
+                </form>
+
+            </article>
+        </section>
+    </main>
+    
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../javascript/form.js"></script>
+</body>
+
+</html>
