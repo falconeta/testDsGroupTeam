@@ -21,7 +21,7 @@ window.addEventListener("load", function () {//avvio funzione dopo il caricament
 
 function modifyDeleteForm() {
   'use strict';
-  $.getJSON("https://jsonplaceholder.typicode.com/users/" + localStorage.getItem("id"), loadForm);
+  /*jshint -W117 */$.getJSON("https://jsonplaceholder.typicode.com/users/" + localStorage.getItem("id"), loadForm);
   if (localStorage.selector === "modify") {
     $("#title").text("Modifica");
     $("#submit").click(function () {
