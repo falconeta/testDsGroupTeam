@@ -1,25 +1,4 @@
 /*global $ */
-function callRest(url, type, typeCall) {// funzione di chiamata servizio rest 
-  'use strict';
-  $.ajax({
-    url: url,
-    type: type,
-    data: $("#contact").serialize(),
-    success: function (data, textStatus) {
-      $("#result").text(typeCall + " " + textStatus);
-      setTimeout(function () {
-        window.open("index.html", "_self");
-      }, 2000);
-    },
-    error: function (data, textStatus, errorThrown) {
-      console.log(errorThrown);
-    }
-  });
-}
-function load(arrayId, arrayValue) {
-  "use strict";
-  $("#" + arrayId).attr("value", arrayValue);
-}
 function loadForm(user) {//binding form in modalità modify/delete
   "use strict";
   var arrayId = [
@@ -43,7 +22,7 @@ function loadForm(user) {//binding form in modalità modify/delete
     user.website
   ];
   for (var i = 0; i < arrayId.length; i++) {
-    load(arrayId[i], arrayValue[i]);
+    /*jshint -W117 */loadVal(arrayId[i], arrayValue[i]);
   }
   $(".loader").fadeOut();
 }
@@ -57,7 +36,7 @@ window.addEventListener("load", function () {//avvio funzione dopo il caricament
       $("#title").text("Crea Utente");
       $(".loader").fadeOut();
       $("#submit").click(function () {
-        callRest("https://jsonplaceholder.typicode.com/users", "post", "create");
+        /*jshint -W117 */ callRest("https://jsonplaceholder.typicode.com/users", "post", "create",$("#contact").serialize(),'#result');
       });
       break;
     case "modify": case "delete":
@@ -65,16 +44,16 @@ window.addEventListener("load", function () {//avvio funzione dopo il caricament
       if (localStorage.selector === "modify") {
         $("#title").text("Modifica");
         $("#submit").click(function () {
-          callRest("https://jsonplaceholder.typicode.com/users/" +
-            localStorage.getItem("id"), "put", "modify");
+          /*jshint -W117 */ callRest("https://jsonplaceholder.typicode.com/users/" +
+            localStorage.getItem("id"), "put", "modify",$("#contact").serialize(),'#result');
         });
       } else {
         $("#submit").attr("value", "Cancella");
         $("#title").text("Elimina");
         $("#submit").click(function () {
           if (window.confirm("Vuoi veramente cancellare l'utente?")) {
-            callRest("https://jsonplaceholder.typicode.com/users/" +
-              localStorage.getItem("id"), "delete", "delete");
+            /*jshint -W117 */ callRest("https://jsonplaceholder.typicode.com/users/" +
+              localStorage.getItem("id"), "delete", "delete",$("#contact").serialize(),'#result');
           }
         });
       }
