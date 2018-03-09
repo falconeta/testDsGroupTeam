@@ -1,6 +1,16 @@
 /*global $ */
 /*exported loadTable*/
-/*imported load*/
+/*exported loadForm*/
+function loadForm(user) {//binding form in modalità modify/delete
+  "use strict";
+  var arrayId = ["name","username","email","street","city","zipcode","phone","website"];
+  var arrayValue = [user.name,user.username,user.email,user.address.street,user.address.city,user.address.zipcode,user.phone,user.website];
+  for (var i = 0; i < arrayId.length; i++) {
+    /*jshint -W117 */loadVal(arrayId[i], arrayValue[i]);
+  }
+  $(".loader").fadeOut();
+}
+
 function loadTable(users) {//funzione bindig tabella
   "use strict";
   var arrayValueTh = ["Nome", "Username", "Website", "Azioni"];
