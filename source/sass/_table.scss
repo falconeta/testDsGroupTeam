@@ -1,0 +1,25 @@
+#userTable{
+    width:100%;
+}
+tr { 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.5em 0;
+    border: 1px solid ;
+  }
+  td, th {
+    flex: 1 1 100px;
+    border: 0.5px solid ;
+  }
+
+table th, table td { 
+    text-align: center; 
+    padding: 0.25em;
+ }
+
+.btn { 
+    border-radius: 3px; 
+    margin: 0 ; 
+    display: inline-block;
+ }
