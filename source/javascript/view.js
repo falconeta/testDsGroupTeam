@@ -43,12 +43,17 @@ function loadDetails(data) {
     var property = Object.getOwnPropertyNames(data);
     var arrayId = ['id', 'name', 'username', 'email', 'address', 'phone', 'website'];
     for (var i = 0; i < arrayId.length; i++) {
-        /*jshint -W117 */
-        if (property[i] !== 'address') {
-            load(arrayId[i], data[property[i]]);
-        }
-        else {
-            load(arrayId[i], ObjectToString(data[property[i]]));
-        }
+        
+        bindingDetails(property, i, arrayId, data);
+    }
+}
+function bindingDetails(property, i, arrayId, data) {
+    'use strict';
+    /*jshint -W117 */
+    if (property[i] !== 'address') {
+        load(arrayId[i], data[property[i]]);
+    }
+    else {
+        load(arrayId[i], ObjectToString(data[property[i]]));
     }
 }
