@@ -1,4 +1,5 @@
 /*global $*/
+/*jshint expr: true*/
 $(document).ready(function () {
     'use strict';
     /*jshint -W117 */

@@ -1,7 +1,9 @@
 /*exported createElement*/
 /*exported createBtn*/
 /*exported load*/
+/*exported loadForm*/
 /*exported ObjectToString*/
+/*exported destructuringObject*/
 /*global $*/
 function createElement(type, data) {
     'use strict';
@@ -9,22 +11,34 @@ function createElement(type, data) {
 }
 function createBtn(name, classBtn, id, value) {
     'use strict';
-    return '<button class="'+classBtn+'" id="'+name+id+'" value="'+id+'" name="'+name+'">'+value+'</button>';
+    return '<button class="' + classBtn + '" id="' + name + id + '" value="' + id + '" name="' + name + '">' + value + '</button>';
 }
-function load(id, value){
+function load(id, value) {
     'use strict';
-    $('#'+id).text(value);
+    $('#' + id).text(value);
 }
-function ObjectToString(data){
+function loadForm(id, value) {
+    'use strict';
+    $('#' + id).val(value);
+}
+function ObjectToString(data) {
     'use strict';
     var property = Object.getOwnPropertyNames(data);
-    var string='';
-    for(var i=0;i<property.length;i++){
-        if(typeof data[property[i]]!=='object'){
-            string+=" "+data[property[i]];
-        }else{
-            string+=" "+ObjectToString(data[property[i]]);
+    var string = '';
+    for (var i = 0; i < property.length; i++) {
+        if (typeof data[property[i]] !== 'object') {
+            string += " " + data[property[i]];
+        } else {
+            string += " " + ObjectToString(data[property[i]]);
         }
     }
     return string;
+}
+function destructuringObject(data, array) {
+    'use strict';
+    var property = Object.getOwnPropertyNames(data);
+    for (var i = 0; i < property.length; i++) {
+        /*jshint -W117 */
+        loadForm(array[i], data[property[i]]);
+    }
 }

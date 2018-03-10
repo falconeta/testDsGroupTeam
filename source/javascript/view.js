@@ -28,11 +28,11 @@ function loadRowTable(table, data) {
     var tr = createTr(data);
     $('#' + table).append(tr);
     /*jshint -W117 */
-    clickBtnTable('details.html','details',data.id);
+    clickBtnTable('details.html', 'details', data.id);
     /*jshint -W117 */
-    clickBtnTable('form.html','modify',data.id);
+    clickBtnTable('form.html', 'modify', data.id);
     /*jshint -W117 */
-    clickBtnTable('form.html','remove',data.id);
+    clickBtnTable('form.html', 'remove', data.id);
 }
 function loadTable(table, data) {
     'use strict';
@@ -40,10 +40,10 @@ function loadTable(table, data) {
         loadRowTable(table, data[i]);
     }
 }
-function bindingDetails(data,id) {
+function bindingDetails(data, id) {
     'use strict';
     /*jshint -W117 */
-    typeof data!=='object' ? load(id, data): load(id, ObjectToString(data));
+    typeof data !== 'object' ? load(id, data) : load(id, ObjectToString(data));
 }
 function loadDetails(data) {
     'use strict';
@@ -53,15 +53,39 @@ function loadDetails(data) {
         bindingDetails(data[property[i]], arrayId[i]);
     }
 }
-function loadCreate(data){
+function loadCreate() {
     'use strict';
     $('#text').text('Crea');
-    console.log(data);
 }
-function loadModifyRemove(){
+function bindingForm(data, array) {
+    'use strict';
+    /*jshint -W117 */
+    typeof data !== 'object' ? loadForm(array, data) : destructuringObject(data, ['street', 'suite', 'city', 'zipcode']);
+}
+function bindForm(data) {
+    'use strict';
+    var property = Object.getOwnPropertyNames(data);
+    var arrayId = ['id', 'name', 'username', 'email', '', 'phone', 'website'];
+    for (var i = 1; i < arrayId.length; i++) {
+        bindingForm(data[property[i]], arrayId[i]);
+    }
+}
+function loadModify() {
+    'use strict';
+    $('#title').text('Modifica');
+    $('#submit').click(function (){
+        $.ajax({
+            type: 'put',
+            data: 
+        });
+    });
+}
+function loadModifyRemove() {
     'use strict';
     /*jshint -W117 */
     service().getUserId(localStorage.getItem('id'), function (data) {
+        bindForm(data);
+        localStorage.getItem('selector') === 'modify' ? loadModify() : loadRemove();
         $('.loader').fadeOut();
     });
 }
