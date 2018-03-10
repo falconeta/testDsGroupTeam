@@ -4,6 +4,7 @@
 /*exported backButton*/
 /*exported callRest*/
 /*exported submit*/
+/*jshint expr: true*/
 var url = "https://jsonplaceholder.typicode.com/users/";
 function service() {
     'use strict';
@@ -28,8 +29,13 @@ function submit(id, type, data, result, typeCall) {
     'use strict';
     $('#submit').click(function () {
         /*jshint -W117 */
-        callRest();
+        type === 'delete' ? del() : callRest();
     });
+    function del() {
+        if (window.confirm("Vuoi veramente cancellare l'utente?")) {
+            callRest();
+        }
+    }
     function callRest() {
         $.ajax({
             url: url + id,
