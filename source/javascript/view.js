@@ -13,7 +13,7 @@ function loadForm(user) {//binding form in modalità modify/delete
 
 function loadTable(users) {//funzione bindig tabella
   "use strict";
-  var arrayValueTh = ["Nome", "Username", "Website", "Azioni"];
+  var arrayValueTh = ["Nome", "Username", "Website"];
   $("#userTable").append($(document.createElement("thead")).append(addRowTh(arrayValueTh)));
   loadTbody(users);
   $("button").click(function (data) {

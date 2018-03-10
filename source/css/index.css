@@ -5,8 +5,8 @@ section {
 
 article {
   display: flex;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap; }
 
 form {
@@ -27,18 +27,25 @@ form {
   box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 4px 0px 10px 0px rgba(0, 0, 0, 0.12); }
 
 #userTable {
-  width: 100%; }
+  width: 80%; }
 
 tr {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0.5em 0;
-  border: 1px solid; }
+  box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 4px 0px 10px 0px rgba(0, 0, 0, 0.12); }
 
-td, th {
-  flex: 1 1 100px;
-  border: 0.5px solid; }
+.table td, th {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 25%;
+  border: 0.5px solid #e0e0e0;
+  font-size: 0.80em;
+  padding: 0.70rem; }
 
 table th, table td {
   text-align: center;
@@ -46,4 +53,6 @@ table th, table td {
 
 .btn {
   border-radius: 3px;
-  margin: 0; }
+  margin: 5px;
+  display: inline-block;
+  width: 90px; }
