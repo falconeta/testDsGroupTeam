@@ -83,10 +83,8 @@ function loadRemove() {
     'use strict';
     $('#title').text('Rimuovi');
     $('#submit').val('Cancella');
-    $('#submit').click(function () {
         /*jshint -W117 */
-        submit(localStorage.getItem('id'), 'delete', $('#contact').serialize, 'result', 'delete');
-    });
+        submit(localStorage.getItem('id'), 'delete', $('#contact').serialize, 'result', 'delete'); 
 }
 function loadModifyRemove() {
     'use strict';
