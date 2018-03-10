@@ -11,6 +11,7 @@ var reportHtml = require('gulp-jshint-html-reporter');
 deletefile = require('gulp-clean');
 const sass = require('gulp-sass');
 let cleanCSS = require('gulp-clean-css');
+var removeCode = require('gulp-remove-code');
 
 
 gulp.task('sass', function () {
@@ -40,19 +41,24 @@ gulp.task('jshintHtml', function () {
 gulp.task('build', function () {
     gulp.src('source/html/*.html')
         .pipe(replace('../css/index.css', 'index.css'))
+        .pipe(replace('../../node_modules/bootstrap/dist/css/bootstrap.min.css', '../node_modules/bootstrap/dist/css/bootstrap.min.css'))
+        .pipe(removeCode({ production: true }))
         .pipe(replace('<script src="../../node_modules/jquery/dist/jquery.js"></script>', '<script src="../node_modules/jquery/dist/jquery.js"></script>'))
+        .pipe(replace('<script src="../../node_modules/tether/dist/js/tether.js"></script>', '<script src="../node_modules/tether/dist/js/tether.js"></script>'))
+        .pipe(replace('<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>', '<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>'))
         .pipe(replace('<script src="../javascript/index.js"></script>', '<script src="bundle.js"></script>'))
-        .pipe(replace('<script src="../../node_modules/jquery-easy-loading/dist/jquery.loading.js"></script>', '<script src="../node_modules/jquery-easy-loading/dist/jquery.loading.js"></script>'))
-        .pipe(replace('../../node_modules/jquery-easy-loading/dist/jquery.loading.css', '../node_modules/jquery-easy-loading/dist/jquery.loading.css'))
+        .pipe(replace('<script src="../javascript/form.js"></script>', '<script src="bundle.js"></script>'))
+        .pipe(replace('<script src="../javascript/details.js"></script>', '<script src="bundle.js"></script>'))
         .pipe(gulp.dest('dist'));
     gulp.src('source/css/*.css')
+        .pipe(replace('../img/load.gif', 'img/load.gif'))
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(gulp.dest('dist'));
+    gulp.src('source/img/*')
+        .pipe(gulp.dest('dist/img'));
     gulp.src('source/javascript/*.js')
         .pipe(sourcemaps.init())
         .pipe(concat('bundle.js'))
         .pipe(uglify()).pipe(sourcemaps.write())
         .pipe(gulp.dest('dist'));
 });
-
-
