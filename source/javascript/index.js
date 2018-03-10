@@ -5,6 +5,9 @@ $(document).ready(function (){
     /*jshint -W117 */
     service().getUser(function (data){
         loadTable("userTable",data);
+        $('#create').click(function (){
+            
+        });
         $('.loader').fadeOut();
     });
 });

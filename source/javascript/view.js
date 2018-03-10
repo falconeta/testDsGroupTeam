@@ -1,6 +1,7 @@
 /*global $*/
 /*exported loadTable*/
 /*exported loadDetails*/
+/*exported loadCreate*/
 /*jshint expr: true*/
 function createTDS(data) {
     'use strict';
@@ -50,4 +51,8 @@ function loadDetails(data) {
     for (var i = 0; i < arrayId.length; i++) {
         bindingDetails(data[property[i]], arrayId[i]);
     }
+}
+function loadCreate(data){
+    'use strict';
+    $('#text').text('Crea');
 }

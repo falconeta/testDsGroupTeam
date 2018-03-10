@@ -3,6 +3,7 @@
 /*exported clickDetails*/
 /*exported clickModify*/
 /*exported clickRemove*/
+/*exported backButton*/
 var url= "https://jsonplaceholder.typicode.com/users/";
 function service() {
     'use strict';
@@ -37,5 +38,11 @@ function clickModify(data) {
         localStorage.setItem('id', data.id);
         localStorage.setItem('selector', 'modify');
         window.open('form.html', "_self");
+    });
+}
+function backButton() {
+    'use strict';
+    $('#back').click(function () {
+        window.open('index.html', "_self");
     });
 }
