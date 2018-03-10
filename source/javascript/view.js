@@ -1,6 +1,7 @@
 /*global $*/
 /*exported loadTable*/
 /*exported loadDetails*/
+/*jshint expr: true*/
 function createTDS(data) {
     'use strict';
     var property = Object.getOwnPropertyNames(data);
@@ -37,23 +38,16 @@ function loadTable(table, data) {
         loadRowTable(table, data[i]);
     }
 }
+function bindingDetails(data,id) {
+    'use strict';
+    /*jshint -W117 */
+    typeof data!=='object' ? load(id, data): load(id, ObjectToString(data));
+}
 function loadDetails(data) {
     'use strict';
-    console.log(data);
     var property = Object.getOwnPropertyNames(data);
     var arrayId = ['id', 'name', 'username', 'email', 'address', 'phone', 'website'];
     for (var i = 0; i < arrayId.length; i++) {
-        
-        bindingDetails(property, i, arrayId, data);
-    }
-}
-function bindingDetails(property, i, arrayId, data) {
-    'use strict';
-    /*jshint -W117 */
-    if (property[i] !== 'address') {
-        load(arrayId[i], data[property[i]]);
-    }
-    else {
-        load(arrayId[i], ObjectToString(data[property[i]]));
+        bindingDetails(data[property[i]], arrayId[i]);
     }
 }
