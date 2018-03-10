@@ -27,11 +27,11 @@ function loadRowTable(table, data) {
     var tr = createTr(data);
     $('#' + table).append(tr);
     /*jshint -W117 */
-    clickDetails(data);
+    clickBtnTable('details.html','details',data);
     /*jshint -W117 */
-    clickModify(data);
+    clickBtnTable('form.html','modify',data);
     /*jshint -W117 */
-    clickRemove(data);
+    clickBtnTable('form.html','remove',data);
 }
 function loadTable(table, data) {
     'use strict';
