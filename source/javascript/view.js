@@ -56,6 +56,9 @@ function loadDetails(data) {
 function loadCreate() {
     'use strict';
     $('#text').text('Crea');
+    $('.loader').fadeOut();
+    /*jshint -W117 */
+    submit('', 'post', $('#contact').serialize, 'result', 'Create');
 }
 function bindingForm(data, array) {
     'use strict';
@@ -73,11 +76,16 @@ function bindForm(data) {
 function loadModify() {
     'use strict';
     $('#title').text('Modifica');
-    $('#submit').click(function (){
-        $.ajax({
-            type: 'put',
-            data: 
-        });
+    /*jshint -W117 */
+    submit(localStorage.getItem('id'), 'put', $('#contact').serialize, 'result', 'modify');
+}
+function loadRemove() {
+    'use strict';
+    $('#title').text('Rimuovi');
+    $('#submit').val('Cancella');
+    $('#submit').click(function () {
+        /*jshint -W117 */
+        submit(localStorage.getItem('id'), 'delete', $('#contact').serialize, 'result', 'delete');
     });
 }
 function loadModifyRemove() {

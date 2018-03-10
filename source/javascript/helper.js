@@ -5,6 +5,7 @@
 /*exported ObjectToString*/
 /*exported destructuringObject*/
 /*global $*/
+/*jshint expr: true*/
 function createElement(type, data) {
     'use strict';
     return '<' + type + '>' + data + '</' + type + '>';
@@ -26,11 +27,7 @@ function ObjectToString(data) {
     var property = Object.getOwnPropertyNames(data);
     var string = '';
     for (var i = 0; i < property.length; i++) {
-        if (typeof data[property[i]] !== 'object') {
-            string += " " + data[property[i]];
-        } else {
-            string += " " + ObjectToString(data[property[i]]);
-        }
+        typeof data[property[i]] !== 'object' ? string += " " + data[property[i]] : string += " " + ObjectToString(data[property[i]]);
     }
     return string;
 }
