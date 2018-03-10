@@ -14,10 +14,10 @@ function service() {
         }
     };
 }
-function clickBtnTable(html,type, data) {
+function clickBtnTable(html,type, id) {
     'use strict';
-    $('#'+type + data.id).click(function () {
-        localStorage.setItem('id', data.id);
+    $('#'+type + id).click(function () {
+        localStorage.setItem('id', id);
         localStorage.setItem('selector', type);
         window.open(html, "_self");
     });

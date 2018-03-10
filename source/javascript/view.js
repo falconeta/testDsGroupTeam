@@ -2,6 +2,7 @@
 /*exported loadTable*/
 /*exported loadDetails*/
 /*exported loadCreate*/
+/*exported loadModifyRemove*/
 /*jshint expr: true*/
 function createTDS(data) {
     'use strict';
@@ -27,11 +28,11 @@ function loadRowTable(table, data) {
     var tr = createTr(data);
     $('#' + table).append(tr);
     /*jshint -W117 */
-    clickBtnTable('details.html','details',data);
+    clickBtnTable('details.html','details',data.id);
     /*jshint -W117 */
-    clickBtnTable('form.html','modify',data);
+    clickBtnTable('form.html','modify',data.id);
     /*jshint -W117 */
-    clickBtnTable('form.html','remove',data);
+    clickBtnTable('form.html','remove',data.id);
 }
 function loadTable(table, data) {
     'use strict';
@@ -55,4 +56,12 @@ function loadDetails(data) {
 function loadCreate(data){
     'use strict';
     $('#text').text('Crea');
+    console.log(data);
+}
+function loadModifyRemove(){
+    'use strict';
+    /*jshint -W117 */
+    service().getUserId(localStorage.getItem('id'), function (data) {
+        $('.loader').fadeOut();
+    });
 }
