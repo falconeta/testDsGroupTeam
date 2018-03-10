@@ -15,7 +15,6 @@ function service() {
         }
     };
 }
-
 function clickDetails(data) {
     'use strict';
     $('#details' + data.id).click(function () {
@@ -32,7 +31,6 @@ function clickRemove(data) {
         window.open('form.html', "_self");
     });
 }
-
 function clickModify(data) {
     'use strict';
     $('#modify' + data.id).click(function () {

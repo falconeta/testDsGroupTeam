@@ -41,13 +41,14 @@ function loadDetails(data) {
     'use strict';
     console.log(data);
     var property = Object.getOwnPropertyNames(data);
-    var arrayId = ['id','name', 'username', 'email', 'address', 'phone', 'website'];
-    for(var i=0;i<arrayId.length;i++){
-        if(property[i]!=='address'){
+    var arrayId = ['id', 'name', 'username', 'email', 'address', 'phone', 'website'];
+    for (var i = 0; i < arrayId.length; i++) {
+        /*jshint -W117 */
+        if (property[i] !== 'address') {
             load(arrayId[i], data[property[i]]);
         }
-        else{
-            load(arrayId[i],ObjectToString(data[property[i]]));
+        else {
+            load(arrayId[i], ObjectToString(data[property[i]]));
         }
     }
 }
