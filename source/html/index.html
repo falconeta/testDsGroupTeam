@@ -11,7 +11,7 @@
 </head>
 
 <body id="loading" class="container">
-    <div class="loader">LOADING...</div>
+    <!-- <div class="loader">LOADING...</div> -->
     <header id="testa" class="jumbotron jumbotron-fluid p-2  shadow-nohover">
         <h1 class="text-center">Utenti</h1>
     </header>
@@ -23,6 +23,15 @@
                 <button name="create" value="" id="crea" class="btn btn-primary my-3">Crea</button>
 
                 <table id="userTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Username</th>
+                            <th>E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
                 </table>
 
             </article>
@@ -33,6 +42,7 @@
     <script src="../../node_modules/tether/dist/js/tether.js"></script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../javascript/helper.js"></script>
+    <script src="../javascript/service.js"></script>
     <script src="../javascript/view.js"></script>
     <script src="../javascript/index.js"></script>
 </body>

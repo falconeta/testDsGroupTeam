@@ -1,75 +1,28 @@
-/*global $ */
+/*global $*/
 /*exported loadTable*/
-/*exported loadForm*/
-function loadForm(user) {//binding form in modalità modify/delete
-  "use strict";
-  var arrayId = ["name","username","email","street","city","zipcode","phone","website"];
-  var arrayValue = [user.name,user.username,user.email,user.address.street,user.address.city,user.address.zipcode,user.phone,user.website];
-  for (var i = 0; i < arrayId.length; i++) {
-    /*jshint -W117 */loadVal(arrayId[i], arrayValue[i]);
-  }
-  $(".loader").fadeOut();
+function createTDS(data) {
+    'use strict';
+    var property=Object.getOwnPropertyNames(data);
+    var tds='';
+    for (var i = 1; i < 4; i++) {
+        tds += createElement('td',property[i]);
+    }
+    console.log(tds);
 }
 
-function loadTable(users) {//funzione bindig tabella
-  "use strict";
-  var arrayValueTh = ["Nome", "Username", "Website"];
-  $("#userTable").append($(document.createElement("thead")).append(addRowTh(arrayValueTh)));
-  loadTbody(users);
-  $("button").click(function (data) {
-    localStorage.setItem('id', data.currentTarget.value);
-    localStorage.setItem('selector', data.currentTarget.name);
-    if (data.currentTarget.name === 'details') {
-      window.open('details.html', "_self");
-    }
-    else {
-      window.open('form.html', "_self");
-    }
-  });
-}
-function loadTbody(users) {
-  "use strict";
-  var tbody = $(document.createElement("tbody"));
-  $("#userTable").append(tbody);
-  for (var j = 0; j < users.length; j++) {//ciclo creazione righe tabella
-    var arrayId = ["id" + j, "name" + j, "username" + j, "website" + j];
-    var arrayValue = [users[j].id, users[j].name, users[j].username, users[j].website];
-    $(tbody).append(addRow(arrayId, arrayValue));
-  }
+function createTr(data) {
+    'use strict';
+    var td = createTDS(data);
 }
 
-function addRow(array, arrayValue) {//funzione creazione righe tabella
-    "use strict";
-    var tr = $(document.createElement("tr"));
-    for (var i = 1; i < array.length; i++) {
-        $(tr).append('<td id="' + array[i] + '" class="text-center">'+arrayValue[i]+'</td>');
-    }
-    var buttons = generateButton(arrayValue);
-    $(tr).append($(document.createElement('td')).append(buttons));
-    return tr;
-  }
-
-function generateButton(arrayValue) {//funzione che genera 3 bottoni
-  'use strict';
-  var buttonId = ["btnDetails" + arrayValue[0], "btnModify" + arrayValue[0], "btnDelete" + arrayValue[0]];
-  var buttonText = ["Dettagli", "Modifica", "Elimina"];
-  var buttonName = ["details", "modify", "delete"];
-  var buttonClass = 'btn btn-primary'; //classe da modificare per stile bottone tabella
-  var buttons = '';
-  for (var k = 0; k < buttonId.length; k++) {
-    /*jshint -W117 */buttons += loadButton(arrayValue[0], buttonId[k], buttonText[k], buttonName[k], buttonClass);
-  }
-  return buttons;
+function loadRowTable(table, data) {
+    'use strict';
+    var tr = createTr(data);
 }
 
-  function addRowTh(array) {//funzione creazione testa tabella
-    "use strict";
-    var tr = $(document.createElement("tr"));
-    $(tr).addClass("forecast bg-inverse text-white");
-    for (var i = 0; i < array.length; i++) {
-      $(tr).append(
-        '<th id="' + array[i] + '" class="text-center">' + array[i] + "</th>"
-      );
+function loadTable(table, data) {
+    'use strict';
+    for (var i = 0; i < data.length; i++) {
+        loadRowTable(table, data[i]);
     }
-    return tr;
-  }
+}
