@@ -1,15 +1,11 @@
-/*global $ */
-/*exported addRow */
-function loadUser(users) {//funzione invocata dalla chiamata get per l'acquisizione degli utenti
-  "use strict";
-  localStorage.setItem("id", "");
-  localStorage.setItem("selector", "");
-  /*jshint -W117 */loadTable(users);//instanza di caricamento tabella
-  $('.loader').fadeOut();
-}
+/*global $*/
 
-window.addEventListener("load", function () {
-  //avvio funzione dopo il caricamento del DOM
-  "use strict";
-  $.getJSON("https://jsonplaceholder.typicode.com/users", loadUser);
+$(document).ready(function (){
+    'use strict';
+    /*jshint -W117 */
+    service().getUser(function (data){
+        loadTable("userTable",data);
+        clickBtnTable('form.html','create','');
+        $('.loader').fadeOut();
+    });
 });

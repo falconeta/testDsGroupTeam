@@ -1,21 +1,41 @@
-/*global $ */
-/*exported creaRiempiElemento*/
+/*exported createElement*/
+/*exported createBtn*/
 /*exported load*/
-/*exported loadButton*/
-/*exported loadVal*/
-function creaRiempiElemento(nomeElemento, valore){
+/*exported loadForm*/
+/*exported ObjectToString*/
+/*exported destructuringObject*/
+/*global $*/
+/*jshint expr: true*/
+function createElement(type, data) {
     'use strict';
-    return '<' + nomeElemento + '>' + valore + '</' + nomeElemento + '>';
+    return '<' + type + '>' + data + '</' + type + '>';
 }
-function loadButton(id, btnId, text, name, classBtn) {//funzione di creazione bottoni
-    "use strict";
-    return '<button id="' + btnId + '" value="' + id + '" name="' + name + '" class="'+classBtn+'">'+text+'</button>';
-  }
-function load(id, value) {//funzione di binding
-    "use strict";
-    $('#'+id).text(value);
-  }
-  function loadVal(arrayId, arrayValue) {
-    "use strict";
-    $("#" + arrayId).attr("value", arrayValue);
-  }
+function createBtn(name, classBtn, id, value) {
+    'use strict';
+    return '<button class="' + classBtn + '" id="' + name + id + '" value="' + id + '" name="' + name + '">' + value + '</button>';
+}
+function load(id, value) {
+    'use strict';
+    $('#' + id).text(value);
+}
+function loadForm(id, value) {
+    'use strict';
+    $('#' + id).val(value);
+}
+function ObjectToString(data) {
+    'use strict';
+    var property = Object.getOwnPropertyNames(data);
+    var string = '';
+    for (var i = 0; i < property.length; i++) {
+        typeof data[property[i]] !== 'object' ? string += " " + data[property[i]] : string += " " + ObjectToString(data[property[i]]);
+    }
+    return string;
+}
+function destructuringObject(data, array) {
+    'use strict';
+    var property = Object.getOwnPropertyNames(data);
+    for (var i = 0; i < property.length; i++) {
+        /*jshint -W117 */
+        loadForm(array[i], data[property[i]]);
+    }
+}

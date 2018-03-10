@@ -1,19 +1,61 @@
-/*global $ */
+/*global $*/
+/*exported service*/
+/*exported clickBtnTable*/
+/*exported backButton*/
 /*exported callRest*/
-function callRest(url, type, typeCall, data, result) {// funzione di chiamata servizio rest 
+/*exported submit*/
+/*jshint expr: true*/
+var url = "https://jsonplaceholder.typicode.com/users/";
+function service() {
     'use strict';
-    $.ajax({
-      url: url,
-      type: type,
-      data: data,
-      success: function (data, textStatus) {
-        $(result).text(typeCall + " " + textStatus);
-        setTimeout(function () {
-          window.open("index.html", "_self");
-        }, 2000);
-      },
-      error: function (data, textStatus, errorThrown) {
-        console.log(errorThrown);
-      }
+    return {
+        getUser: function (callback) {
+            $.getJSON(url, callback);
+        },
+        getUserId: function (id, callback) {
+            $.getJSON(url + id, callback);
+        }
+    };
+}
+function clickBtnTable(html, type, id) {
+    'use strict';
+    $('#' + type + id).click(function () {
+        localStorage.setItem('id', id);
+        localStorage.setItem('selector', type);
+        window.open(html, "_self");
     });
-  }
+}
+function submit(id, type, data, result, typeCall) {
+    'use strict';
+    $('#submit').click(function () {
+        /*jshint -W117 */
+        type === 'delete' ? del() : callRest();
+    });
+    function del() {
+        if (window.confirm("Vuoi veramente cancellare l'utente?")) {
+            callRest();
+        }
+    }
+    function callRest() {
+        $.ajax({
+            url: url + id,
+            type: type,
+            data: data,
+            success: function (data, textStatus) {
+                $('#' + result).text(typeCall + " " + textStatus);
+                setTimeout(function () {
+                    window.open("index.html", "_self");
+                }, 2000);
+            },
+            error: function (data, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+    }
+}
+function backButton() {
+    'use strict';
+    $('#back').click(function () {
+        window.open('index.html', "_self");
+    });
+}

@@ -20,9 +20,18 @@
         <section id="dati">
             <article class="">
                 <!--Table-->
-                <button name="create" value="" id="crea" class="btn btn-primary my-3">Crea</button>
+                <button name="create" value="" id="create" class="btn btn-primary my-3">Crea</button>
 
                 <table id="userTable" class="table table-striped">
+                    <thead>
+                        <tr class="forecast bg-inverse text-white">
+                            <th>Nome</th>
+                            <th>Username</th>
+                            <th>E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
                 </table>
 
             </article>
@@ -32,8 +41,11 @@
     <script src="../../node_modules/jquery/dist/jquery.js"></script>
     <script src="../../node_modules/tether/dist/js/tether.js"></script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!--removeIf(production)-->
     <script src="../javascript/helper.js"></script>
+    <script src="../javascript/service.js"></script>
     <script src="../javascript/view.js"></script>
+    <!--endRemoveIf(production)-->
     <script src="../javascript/index.js"></script>
 </body>
 

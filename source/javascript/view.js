@@ -1,75 +1,97 @@
-/*global $ */
+/*global $*/
 /*exported loadTable*/
-/*exported loadForm*/
-function loadForm(user) {//binding form in modalità modify/delete
-  "use strict";
-  var arrayId = ["name","username","email","street","city","zipcode","phone","website"];
-  var arrayValue = [user.name,user.username,user.email,user.address.street,user.address.city,user.address.zipcode,user.phone,user.website];
-  for (var i = 0; i < arrayId.length; i++) {
-    /*jshint -W117 */loadVal(arrayId[i], arrayValue[i]);
-  }
-  $(".loader").fadeOut();
-}
-
-function loadTable(users) {//funzione bindig tabella
-  "use strict";
-  var arrayValueTh = ["Nome", "Username", "Website"];
-  $("#userTable").append($(document.createElement("thead")).append(addRowTh(arrayValueTh)));
-  loadTbody(users);
-  $("button").click(function (data) {
-    localStorage.setItem('id', data.currentTarget.value);
-    localStorage.setItem('selector', data.currentTarget.name);
-    if (data.currentTarget.name === 'details') {
-      window.open('details.html', "_self");
+/*exported loadDetails*/
+/*exported loadCreate*/
+/*exported loadModifyRemove*/
+/*jshint expr: true*/
+function createTDS(data) {
+    'use strict';
+    var property = Object.getOwnPropertyNames(data);
+    var tds = '';
+    for (var i = 1; i < 4; i++) {
+        /*jshint -W117 */
+        tds += createElement('td', data[property[i]]);
     }
-    else {
-      window.open('form.html', "_self");
-    }
-  });
+    return tds;
 }
-function loadTbody(users) {
-  "use strict";
-  var tbody = $(document.createElement("tbody"));
-  $("#userTable").append(tbody);
-  for (var j = 0; j < users.length; j++) {//ciclo creazione righe tabella
-    var arrayId = ["id" + j, "name" + j, "username" + j, "website" + j];
-    var arrayValue = [users[j].id, users[j].name, users[j].username, users[j].website];
-    $(tbody).append(addRow(arrayId, arrayValue));
-  }
+function createTr(data) {
+    'use strict';
+    var tr = createTDS(data);
+    /*jshint -W117 */
+    tr += createElement('td', createBtn('details', 'btn btn-primary', data.id, 'Dettagli') +
+        createBtn('modify', 'btn btn-primary', data.id, 'Modifica') +
+        createBtn('remove', 'btn btn-primary', data.id, 'Rimuovi'));
+    return createElement('tr', tr);
 }
-
-function addRow(array, arrayValue) {//funzione creazione righe tabella
-    "use strict";
-    var tr = $(document.createElement("tr"));
-    for (var i = 1; i < array.length; i++) {
-        $(tr).append('<td id="' + array[i] + '" class="text-center">'+arrayValue[i]+'</td>');
-    }
-    var buttons = generateButton(arrayValue);
-    $(tr).append($(document.createElement('td')).append(buttons));
-    return tr;
-  }
-
-function generateButton(arrayValue) {//funzione che genera 3 bottoni
-  'use strict';
-  var buttonId = ["btnDetails" + arrayValue[0], "btnModify" + arrayValue[0], "btnDelete" + arrayValue[0]];
-  var buttonText = ["Dettagli", "Modifica", "Elimina"];
-  var buttonName = ["details", "modify", "delete"];
-  var buttonClass = 'btn btn-primary'; //classe da modificare per stile bottone tabella
-  var buttons = '';
-  for (var k = 0; k < buttonId.length; k++) {
-    /*jshint -W117 */buttons += loadButton(arrayValue[0], buttonId[k], buttonText[k], buttonName[k], buttonClass);
-  }
-  return buttons;
+function loadRowTable(table, data) {
+    'use strict';
+    var tr = createTr(data);
+    $('#' + table).append(tr);
+    /*jshint -W117 */
+    clickBtnTable('details.html', 'details', data.id);
+    /*jshint -W117 */
+    clickBtnTable('form.html', 'modify', data.id);
+    /*jshint -W117 */
+    clickBtnTable('form.html', 'remove', data.id);
 }
-
-  function addRowTh(array) {//funzione creazione testa tabella
-    "use strict";
-    var tr = $(document.createElement("tr"));
-    $(tr).addClass("forecast bg-inverse text-white");
-    for (var i = 0; i < array.length; i++) {
-      $(tr).append(
-        '<th id="' + array[i] + '" class="text-center">' + array[i] + "</th>"
-      );
+function loadTable(table, data) {
+    'use strict';
+    for (var i = 0; i < data.length; i++) {
+        loadRowTable(table, data[i]);
     }
-    return tr;
-  }
+}
+function bindingDetails(data, id) {
+    'use strict';
+    /*jshint -W117 */
+    typeof data !== 'object' ? load(id, data) : load(id, ObjectToString(data));
+}
+function loadDetails(data) {
+    'use strict';
+    var property = Object.getOwnPropertyNames(data);
+    var arrayId = ['id', 'name', 'username', 'email', 'address', 'phone', 'website'];
+    for (var i = 0; i < arrayId.length; i++) {
+        bindingDetails(data[property[i]], arrayId[i]);
+    }
+}
+function loadCreate() {
+    'use strict';
+    $('#text').text('Crea');
+    $('.loader').fadeOut();
+    /*jshint -W117 */
+    submit('', 'post', $('#contact').serialize, 'result', 'Create');
+}
+function bindingForm(data, array) {
+    'use strict';
+    /*jshint -W117 */
+    typeof data !== 'object' ? loadForm(array, data) : destructuringObject(data, ['street', 'suite', 'city', 'zipcode']);
+}
+function bindForm(data) {
+    'use strict';
+    var property = Object.getOwnPropertyNames(data);
+    var arrayId = ['id', 'name', 'username', 'email', '', 'phone', 'website'];
+    for (var i = 1; i < arrayId.length; i++) {
+        bindingForm(data[property[i]], arrayId[i]);
+    }
+}
+function loadModify() {
+    'use strict';
+    $('#title').text('Modifica');
+    /*jshint -W117 */
+    submit(localStorage.getItem('id'), 'put', $('#contact').serialize, 'result', 'modify');
+}
+function loadRemove() {
+    'use strict';
+    $('#title').text('Rimuovi');
+    $('#submit').val('Cancella');
+        /*jshint -W117 */
+        submit(localStorage.getItem('id'), 'delete', $('#contact').serialize, 'result', 'delete'); 
+}
+function loadModifyRemove() {
+    'use strict';
+    /*jshint -W117 */
+    service().getUserId(localStorage.getItem('id'), function (data) {
+        bindForm(data);
+        localStorage.getItem('selector') === 'modify' ? loadModify() : loadRemove();
+        $('.loader').fadeOut();
+    });
+}
