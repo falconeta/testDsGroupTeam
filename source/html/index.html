@@ -10,7 +10,7 @@
     <title>Index</title>
 </head>
 
-<body id="loading" class="container">
+<body id="loading" class="">
     <div class="loader">LOADING...</div>
     <header id="testa" class="jumbotron jumbotron-fluid p-2  shadow-nohover">
         <h1 class="text-center">Utenti</h1>
@@ -36,105 +36,82 @@
 
             </article>
         </section>
-        
 
-             <!-- Modal Contattaci -->
-             <div class="modal fade" id="modalContact">
-                    <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                    
-                        <!-- Modal Header -->
-                        <div class="modal-header">
+
+        <!-- Modal Contattaci -->
+        <div class="modal fade" id="modalContact">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
                         <h4 class="modal-title">Contattaci</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                        <h2>Scrivici un messaggio.</h2>
-                        
-                        <form action="" method="POST" class="myForm" class="container">
-                            <div class="modal-rows">
-                                <div class="row">
-                                     
-                                        <div class="col-md-1">Nome:</div> <!--vedi tu se vuoi togliere il testo e lasciare il placeholder in ogni input -->
-                                        <input class="col-md-5" type="text" placeholder="Nome" id="nome" required>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">Email:</div>
-                                        <input class="col-md-5"type="email" placeholder="Email" id="email" required>
-                
-                                    </div>
-                                    <div class="row">
-                                        
-                                        <div class="col-md-1"></div>
-                                        <input class="col-md-5"type="tel" placeholder="Numero di telefono" id="tel" required>
-                                        
-                                    </div>
-                                    <div class="row">
-                                        
-                                        <div class="col-md-1"></div>
-                                        <textarea class="col-md-5"name="text" id="textarea" cols="30" rows="10" placeholder="Scrivici un messaggio" required></textarea>
-                
-                                    </div>
-                            </div>
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <input class="btn btn-primary" type="submit" value="Submit">
-                            <input class="btn btn-danger" type="reset" value="Reset">
-                        <input type="button" class="btn btn-warning" data-dismiss="modal" value="Close">
-                        </form>
-                        </div>
-                        
                     </div>
-                    </div>
-                </div>
-                <!-- Modal contattaci -->
-                <!-- Modal about us-->
-                 <!-- Modal -->
-        <div class="modal fade" id="modalAbout" role="dialog">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">About us</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>    
-            </div>
-            <div class="modal-body">
-              <p>Romeo Quartiero fonda DS Group partendo dal prodotto “DS Lab – Decision Support Laboratory”,
-                   un sistema software di supporto alle decisioni, sviluppando in prima persona l’azienda 
-                  nell’area della consulenza informatica con la carica di presidente e direttore commerciale..</p>
-            </div>
-            <div class="modal-footer">
-              <input type="button" class="btn btn-warning" data-dismiss="modal" value="Close">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-                <!-- Modal di about us footer-->
-    </main>
-    
 
-    
-    
-    <footer class="footer-basic-centered bg-warning">
-            <div class="row">
-                <div id="footermenu" class="col-md-3">
-                    <div class="row">
-                            <div class="col-md-6"><a href="#modalContact" data-toggle="modal">Contact</a></div>
-                            <div class="col-md-6"><a href="#modalAbout" data-toggle="modal">About</a></div>
-                    </div> 
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>Scrivici un messaggio.</h2>
+                        <form action="" method="POST" name="modalForm" id="modalForm" class="myForm" class="container">
+                            <div class="form-group">
+                                <label>Nome:</label>
+                                <input type="text" class="form-control " name="name" id="name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail:</label>
+                                <input type="text" class="form-control " name="email" id="email" placeholder="E-mail">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefono:</label>
+                                <input type="text" class="form-control " name="phone" id="phone" placeholder="Telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea">Scrivici un messaggio</label>
+                                <textarea class="form-control" id="textArea" rows="3"></textarea>
+                            </div>
+                            <input class="btn btn-primary" id="submit" type="button" value="Submit">
+                            <input class="btn btn-danger" type="reset" value="Reset">
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-warning" data-dismiss="modal" value="Close">
+                    </div>
                 </div>
-                <div class="col-md-4"></div>
-                    
             </div>
-            <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">Copyright: Vittorio Lo Preiato & Sami Arrom</div>
-                    <div class="col-md-4"></div>
+        </div>
+        <!-- Modal contattaci -->
+        <!-- Modal about us-->
+        <!-- Modal -->
+        <div class="modal fade" id="modalAbout" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">About us</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Romeo Quartiero fonda DS Group partendo dal prodotto “DS Lab – Decision Support Laboratory”, un sistema
+                            software di supporto alle decisioni, sviluppando in prima persona l’azienda nell’area della consulenza
+                            informatica con la carica di presidente e direttore commerciale..</p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-warning" data-dismiss="modal" value="Close">
+                    </div>
+                </div>
             </div>
-    </footer> 
+        </div>
+        </div>
+        <!-- Modal di about us footer-->
+    </main>
+    <footer class="bg-inverse">
+        <div>
+            <div class="text-center m-3">
+                <a class="mx-4" href="#modalContact" data-toggle="modal">Contact</a>
+                <a class="mx-4" href="#modalAbout" data-toggle="modal">About</a>
+            </div>
+            <div class="text-center"><p class="m-0 text-success">Copyright:</p><p class="text-success"> Vittorio Lo Preiato & Sami Arrom</p></div>
+    </footer>
 
     <script src="../../node_modules/jquery/dist/jquery.js"></script>
     <script src="../../node_modules/tether/dist/js/tether.js"></script>

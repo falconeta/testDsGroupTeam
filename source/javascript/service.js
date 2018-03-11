@@ -4,6 +4,7 @@
 /*exported backButton*/
 /*exported callRest*/
 /*exported submit*/
+/*exported submitModal*/
 /*jshint expr: true*/
 var url = "https://jsonplaceholder.typicode.com/users/";
 function service() {
@@ -57,5 +58,12 @@ function backButton() {
     'use strict';
     $('#back').click(function () {
         window.open('index.html', "_self");
+    });
+}
+
+function submitModal() {
+    'use strict';
+    $('#submit').click(function () {
+         $('#modalContact').modal('toggle');
     });
 }

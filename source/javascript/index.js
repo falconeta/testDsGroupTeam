@@ -6,6 +6,7 @@ $(document).ready(function (){
     service().getUser(function (data){
         loadTable("userTable",data);
         clickBtnTable('form.html','create','');
+        submitModal();
         $('.loader').fadeOut();
     });
 });
