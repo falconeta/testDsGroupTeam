@@ -55,7 +55,7 @@ function loadDetails(data) {
 }
 function loadCreate() {
     'use strict';
-    $('#text').text('Crea');
+    $('#title').text('Crea');
     $('.loader').fadeOut();
     /*jshint -W117 */
     submit('', 'post', $('#contact').serialize, 'result', 'Create');
