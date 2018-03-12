@@ -4,9 +4,10 @@ $(document).ready(function (){//Una volta che il DOM è caricato esegui la funzi
     'use strict';
     /*jshint -W117 */
     service().getUser(function (data){
-        loadTable("userTable",data); //funzione dichiarata in view.js, crea la tabella passando l'oggetto data ricevuto 
-        clickBtnTable('form.html','create',''); //
-        submitModal();
-        $('.loader').fadeOut();
+        loadTable("userTable",data); //funzione definita in view.js, crea la tabella passando l'oggetto data ricevuto 
+        clickBtnTable('form.html','create',''); //funzione definita in service.js
+        submitModal();//funzione definita in service.js
+        $('.loader').fadeOut(); //nasconde div loader
     });
 });
+

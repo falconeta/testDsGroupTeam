@@ -6,23 +6,30 @@
 /*exported destructuringObject*/
 /*global $*/
 /*jshint expr: true*/
+
+//crea un elemento e lo restituisce in forma di stringa
 function createElement(type, data) {
     'use strict';
     return '<' + type + '>' + data + '</' + type + '>';
 }
+
+//crea un elemento bottone con un nome, classe, id e valore
 function createBtn(name, classBtn, id, value) {
     'use strict';
     return '<button class="' + classBtn + '" id="' + name + id + '" value="' + id + '" name="' + name + '">' + value + '</button>';
 }
-function load(id, value) {
+
+function load(id, value) {//binding generico
     'use strict';
     $('#' + id).text(value);
 }
-function loadForm(id, value) {
+
+function loadForm(id, value) {//binding della form
     'use strict';
     $('#' + id).val(value);
 }
-function ObjectToString(data) {
+
+function ObjectToString(data) {//converte un oggetto in stringa
     'use strict';
     var property = Object.getOwnPropertyNames(data);
     var string = '';
@@ -31,7 +38,9 @@ function ObjectToString(data) {
     }
     return string;
 }
-function destructuringObject(data, array) {
+
+//destrutturizza oggetto ed effettua il binding dei dati
+function destructuringObject(data, array) { 
     'use strict';
     var property = Object.getOwnPropertyNames(data);
     for (var i = 0; i < property.length; i++) {
