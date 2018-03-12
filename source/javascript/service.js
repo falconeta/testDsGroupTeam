@@ -6,6 +6,8 @@
 /*exported submit*/
 /*exported submitModal*/
 /*jshint expr: true*/
+
+//funzione che ha come propietà funzioni di richiesta rest
 var url = "https://jsonplaceholder.typicode.com/users/";
 function service() {
     'use strict';
@@ -18,6 +20,8 @@ function service() {
         }
     };
 }
+
+//crea evento associato al click bottone
 function clickBtnTable(html, type, id) {
     'use strict';
     $('#' + type + id).click(function () {
@@ -26,6 +30,9 @@ function clickBtnTable(html, type, id) {
         window.open(html, "_self");
     });
 }
+
+//crea evento associato al click bottone submit ed effettua la chiamata rest al server
+//possibili chiamate: put, post, delete
 function submit(id, type, data, result, typeCall) {
     'use strict';
     $('#submit').click(function () {
@@ -54,6 +61,8 @@ function submit(id, type, data, result, typeCall) {
         });
     }
 }
+
+//crea evento associato al click bottone insietro
 function backButton() {
     'use strict';
     $('#back').click(function () {
@@ -61,6 +70,7 @@ function backButton() {
     });
 }
 
+//crea evento associato al click bottone submit della modale
 function submitModal() {
     'use strict';
     $('#submit').click(function () {
