@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Index</title>
+</head>
+
+<body id="loading" class="">
+    <div class="loader">LOADING...</div>
+    <header id="testa" class="jumbotron jumbotron-fluid p-2  shadow-nohover">
+        <h1 class="text-center">Utenti</h1>
+    </header>
+    <main id="container1" class=" shadow-nohover">
+
+        <section id="dati">
+            <article class="">
+                <!--Table-->
+                <button name="create" value="" id="create" class="btn btn-primary my-3">Crea</button>
+
+                <table id="userTable" class="table table-striped">
+                    <thead>
+                        <tr class="forecast bg-inverse text-white">
+                            <th>Nome</th>
+                            <th>Username</th>
+                            <th>E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </article>
+        </section>
+
+
+        <!-- Modal Contattaci -->
+        <div class="modal fade" id="modalContact">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Contattaci</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>Scrivici un messaggio.</h2>
+                        <form action="" method="POST" name="modalForm" id="modalForm" class="myForm" class="container">
+                            <div class="form-group">
+                                <label>Nome:</label>
+                                <input type="text" class="form-control " name="name" id="name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail:</label>
+                                <input type="text" class="form-control " name="email" id="email" placeholder="E-mail">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefono:</label>
+                                <input type="text" class="form-control " name="phone" id="phone" placeholder="Telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea">Scrivici un messaggio</label>
+                                <textarea class="form-control" id="textArea" rows="3"></textarea>
+                            </div>
+                            <input class="btn btn-primary" id="submit" type="button" value="Submit">
+                            <input class="btn btn-danger" type="reset" value="Reset">
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-warning" data-dismiss="modal" value="Close">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal contattaci -->
+        <!-- Modal about us-->
+        <!-- Modal -->
+        <div class="modal fade" id="modalAbout" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">About us</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Romeo Quartiero fonda DS Group partendo dal prodotto “DS Lab – Decision Support Laboratory”, un sistema
+                            software di supporto alle decisioni, sviluppando in prima persona l’azienda nell’area della consulenza
+                            informatica con la carica di presidente e direttore commerciale..</p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-warning" data-dismiss="modal" value="Close">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- Modal di about us footer-->
+    </main>
+    <footer class="bg-inverse">
+        <div>
+            <div class="text-center m-3">
+                <a class="mx-4" href="#modalContact" data-toggle="modal">Contact</a>
+                <a class="mx-4" href="#modalAbout" data-toggle="modal">About</a>
+            </div>
+            <div class="text-center"><p class="m-0 text-success">Copyright:</p><p class="text-success"> Vittorio Lo Preiato & Sami Arrom</p></div>
+    </footer>
+
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/tether/dist/js/tether.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!--removeIf(production)-->
+    <script src="../javascript/helper.js"></script>
+    <script src="../javascript/service.js"></script>
+    <script src="../javascript/view.js"></script>
+    <!--endRemoveIf(production)-->
+    <script src="../javascript/index.js"></script>
+</body>
+
+</html>

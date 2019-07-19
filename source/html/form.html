@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <div class="loader">LOADING...</div>
+    <header id="testa" class="jumbotron jumbotron-fluid p-2  shadow-nohover">
+        <h1 class="text-center" id="title" class="h headers"></h1>
+    </header>
+    <main class="container">
+        <section>
+            <article>
+                <form id="contact">
+                    <div class="form-group">
+                        <label>NAME:</label>
+                        <input type="text" class="form-control " name="name" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label>USERNAME:</label>
+                        <input type="text" class="form-control" name="username" class="form" id="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label>E-MAIL:</label>
+                        <input type="email" class="form-control" name="email" class="form" id="email" placeholder="E-mail">
+                    </div>
+                    <div class="form-group">
+                        <label>Via:</label>
+                        <input type="text" class="form-control" name="address.street" class="form" id="street" placeholder="via">
+                    </div>
+                    <div class="form-group">
+                        <label>Città:</label>
+                        <input type="text" class="form-control" name="address.city" class="form" id="city" placeholder="città">
+                    </div>
+                    <div class="form-group">
+                        <label>CAP:</label>
+                        <input type="text" class="form-control" name="address.zipcode" class="form" id="zipcode" placeholder="CAP">
+                    </div>
+                    <div class="form-group">
+                            <label>Civico:</label>
+                            <input type="text" class="form-control" name="address.zipcode" class="form" id="suite" placeholder="Civico">
+                        </div>
+                    <div class="form-group">
+                        <label>PHONE:</label>
+                        <input type="text" class="form-control" name="phone" class="form" id="phone" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                        <label>WEBSITE:</label>
+                        <input type="text" class="form-control" name="website" class="form" id="website" placeholder="Website">
+                    </div>
+                    <div class="contBot">
+                        <input type="button" class="btn btn-warning" id="back" value="Indietro">
+                        <input type="button" class="btn btn-primary" id="submit" value="INVIA">
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                        <span id="result"></span>
+                    </div>
+                </form>
+
+            </article>
+        </section>
+    </main>
+
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/tether/dist/js/tether.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!--removeIf(production)-->
+    <script src="../javascript/helper.js"></script>
+    <script src="../javascript/service.js"></script>
+    <script src="../javascript/view.js"></script>
+    <!--endRemoveIf(production)-->
+    <script src="../javascript/form.js"></script>
+</body>
+
+</html>

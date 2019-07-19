@@ -1,0 +1,33 @@
+#userTable{
+    width:80%;
+}
+tr { 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0.5em 0;
+    //border: 1px solid ;
+    box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 4px 0px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+  .table td, th {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 25%;
+    border: 0.5px solid rgb(224, 224, 224) ;
+    font-size: 0.80em;
+    padding: 0.70rem;
+  }
+table th, table td { 
+    text-align: center; 
+    padding: 0.25em;
+ }
+
+.btn { 
+    border-radius: 3px; 
+    margin: 5px ; 
+    display: inline-block;
+    width: 90px;
+ }
